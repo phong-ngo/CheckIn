@@ -1,0 +1,138 @@
+{
+    "info":{
+        "title" : "Check In API Documentation",
+        "description" : "API Checkin Project",
+        "version": "3.0.0",
+        "basePath": "/", 
+        "license": {
+            "name": "Phong ngô",
+            "url": ""
+        }
+    },
+    "openapi": "3.0.n", 
+    "host": "",
+      "tags": [
+        {
+          "name": "Users",
+          "description": "API for Users Endpoints"
+        }
+      ],
+      "schemes": ["http","https"],
+      "consumes": ["application/json"],
+      "produces": ["application/json"],
+      "paths" :{
+        "/users":{
+            "get":{
+                "tags":["Users"],
+                "summary": "API Endpoint for get list users",
+                "description" : "Get list users in database",
+                  "produces" : ["application/json"],
+                  "responses":{
+                    "200":{
+                      "description" : "Get list user successfully",
+                      "schema": {
+                        "$ref" : "#definitions/User"
+                      }
+                    }
+                  }  
+            }
+        },
+        "/users/add":{
+            "post":{
+              "tags": ["Users"],
+              "summary": "API Endpoint to get user by id",
+              "description" : "Get user by id",
+              "produces" : ["application/json"],
+              "responses":{
+                "200":{
+                  "description" : "Get user successsfully",
+                  "schema": {
+                  }
+                }
+              }
+            }
+        },
+        "/users/{userId}":{
+            "put":{
+              "tags": ["Users"],
+              "summary": "API Endpoint to login his/her account",
+              "description" : "Login user",
+              "parameters":[
+                {
+                  "name": "userId",
+                  "description": "userId",
+                  "in": "path",
+                  "required": "true",
+                  "schema" : {
+                  }
+                }
+              ],
+              "produces" : ["application/json"],
+              "responses":{
+                "200":{
+                  "description" : "New user has loggedIn",
+                  "schema": {
+                  }
+                }
+              }
+            }
+          },
+          "/users/{id}":{
+            "delete":{
+              "tags": ["Users"],
+              "summary": "API Endpoint to login his/her account",
+              "description" : "Login user",
+              "parameters":[
+                {
+                  "name": "id",
+                  "description": "id",
+                  "in": "path",
+                  "required": "true",
+                  "schema" : {
+                  }
+                }
+              ],
+              "produces" : ["application/json"],
+              "responses":{
+                "200":{
+                  "description" : "New user has loggedIn",
+                  "schema": {
+                  }
+                }
+              }
+            }
+          }
+      },
+      "definitions":{
+        "SignupRsp":{
+         "properties":{
+           "success": {
+             "type":"boolean"
+         }
+        }
+      },
+      "User":{
+        "required": ["firstName","lastName", "email", "password"],
+        "properties":{
+          "_id": {
+            "type" : "string"
+          },
+          "firstName": {
+            "type" : "string"
+          },
+          "lastName": {
+            "type" : "string"
+          },
+          "email": {
+            "type" : "string"
+          },
+          "password": {
+            "type" : "string"
+          },
+          "role": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+}
